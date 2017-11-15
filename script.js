@@ -17,28 +17,29 @@ function User(nameUser, ageUser, sexUser) {
     function isAdult (age) {
         return age > 17
     }
+    return {
+        getNameUser: function () {
+            return name || 'Bublik'
+        },
 
-    this.getNameUser = function () {
-        return name || 'Bublik'
-    };
+        setName: function (newName) {
+            if (typeof newName === 'string' && newName.length > 3) {
+                name = newName;
+                return name;
+            }
+            else {
+                return new Error('too short')
+            }
+        },
 
-    this.setName = function (newName) {
-        if (typeof newName === 'string' && newName.length > 3) {
-            name = newName;
-            return name;
+        getSecretFiles: function () {
+            if (isAdult(age)) {
+                return 'some strage files'
+            } else {
+                return new Error('you are too young')
+            }
         }
-        else {
-            return new Error('too short')
-        }
-    };
-
-    this.getSecretFiles = function () {
-      if(isAdult(age)){
-          return 'some strage files'
-      } else {
-         return new Error('you are too young')
-      }
-    };
+    }
 }
 
 var Alena = new User('Alena', '33', 'women');
